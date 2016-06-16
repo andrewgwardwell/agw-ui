@@ -1,0 +1,19 @@
+<div class="container">
+
+<uib-tabset active='main.active'>
+  <uib-tab index='0' heading='0'>
+    <div class="main-content">
+      <div class="projects" ng-repeat="(key, value) in main.work">
+        {{value.title}}
+      </div>
+    </div>
+  </uib-tab>
+  <uib-tab index='1' heading='1'>
+    <div class="main-content">
+      <div class="projects" ng-repeat="(key, value) in main.art">
+        {{value.title}}
+      </div>
+    </div>
+  </uib-tab>
+</uib-tabset>
+</div>
