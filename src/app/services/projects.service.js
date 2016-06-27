@@ -1,42 +1,23 @@
 (function() {
 'use strict';
-
+var url = 'http://www.andrewgwardwell.com/api/node';
 angular
+//http://andrewgwardwell.com/api/node?parameters[type]=ent_project
   .module('agwUi')
   .factory('projects', function($resource) {
-    return $resource('http://www.andrewgwardwell.com/node.json', {
-      type: '@type'
+    return $resource(url, {
+      type: '@type',
+      id: '@id'
     },
     {
-      'delete': {
-        method: 'DELETE',
-        url: 'api/items/:id',
-        params:{
-          id: '@id'
-        }
-      },
-      'query': {
+      'getProjects': {
         method: 'GET',
-        url: 'api/items/:catno/',
-        params:{
-          catno:'@catno'
-        }
+        isArray: true
       },
-      'save': {
-        method: 'POST'
-      },
-      'update': {
-        method: 'PUT',
-        url: 'api/items/:id',
-        params: {
-          id: '@itemId'
-        }
-      },
-      'addToCart': {
-        method: 'POST',
-        url: 'api/carts/items/'
+      'getProject': {
+        method: 'GET',
+        url: url + '/:id'
       }
-
     });
   });
 })();
