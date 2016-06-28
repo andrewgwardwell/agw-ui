@@ -1,6 +1,6 @@
 (function() {
 'use strict';
-var url = 'http://www.andrewgwardwell.com/api/node';
+var url = 'http://www.andrewgwardwell.com/api';
 angular
 //http://andrewgwardwell.com/api/node?parameters[type]=ent_project
   .module('agwUi')
@@ -10,13 +10,19 @@ angular
       id: '@id'
     },
     {
+      'getProjectsByTerm': {
+        method: 'POST',
+        url: url + '/taxonomy_term/selectNodes',
+        isArray: true
+      },
       'getProjects': {
         method: 'GET',
-        isArray: true
+        isArray: true,
+        url: url + '/node'
       },
       'getProject': {
         method: 'GET',
-        url: url + '/:id'
+        url: url + '/node/:id'
       }
     });
   });
