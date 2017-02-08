@@ -5,6 +5,7 @@
   angular
     .module('agwUi')
     .constant('malarkey', malarkey)
-    .constant('moment', moment);
+    .constant('moment', moment)
+    .constant('_', window._);
 
 })();

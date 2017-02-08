@@ -1,7 +1,11 @@
 {
   "name": "agwUi",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "eslint-plugin-react": "^6.9.0",
+    "lodash": "^3.10.1",
+    "underscore": "^1.8.3"
+  },
   "scripts": {
     "test": "gulp test"
   },

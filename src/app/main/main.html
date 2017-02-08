@@ -1,19 +1,12 @@
 <div class="container">
-
-<uib-tabset active='main.active'>
-  <uib-tab index='0' heading='0'>
-    <div class="main-content">
-      <div class="projects" ng-repeat="(key, value) in main.work">
-        {{value.title}}
+      <div class="menu col-md-12 col-lg-2">
+        <input type="text" name="skill" ng-model="main.skill" ng-change='main.filterSkills()'>
+      </div>
+      <div class="col-sm-12 col-md-12 col-lg-10">
+      <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in main.projects track by $index">
+        <div class="ent_title"><img class="img-rounded img-responsive" src="{{value.field_image}}" /></div>
+        <div class="ent_title">{{value.title}}</div>
       </div>
     </div>
-  </uib-tab>
-  <uib-tab index='1' heading='1'>
-    <div class="main-content">
-      <div class="projects" ng-repeat="(key, value) in main.art">
-        {{value.title}}
-      </div>
-    </div>
-  </uib-tab>
-</uib-tabset>
 </div>
+
