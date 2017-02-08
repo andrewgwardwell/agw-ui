@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(projects) {
+  function MainController(projects, $log) {
     // var _ = lodash;
     var vm = this;
     vm.data = [];
@@ -29,14 +29,13 @@
       });
     };
 
-    getByTerms();
-
     function getByTerms(){
       projects.getProjects({}, function(response){
+          $log.info('Success! Got projects.');
           vm.data = response;
           vm.projects = response;
         }, function(){
-
+          $log.info('Error! Project fetch failed.');
         });
     };
 
@@ -48,5 +47,7 @@
         return false;
       }
     };
+
+    getByTerms();
   }
 })();
