@@ -1,0 +1,167 @@
+
+.table-wrapper{
+  .table{
+    background: #FFFFFF;
+    &.full{
+      margin-top: 20px;
+    }
+  }
+  thead{
+    background: grey;
+  }
+  th{
+    .fa-chevron-down,
+    .fa-chevron-up{
+      display: none;
+    }
+  }
+  th.sortable{
+    .fa-chevron-down,
+    .fa-chevron-up{
+      display: none;
+    }
+    &.active.desc{
+      .fa-chevron-down{
+        display: inline-block;
+      }
+      span:before{
+        //content: '\2304';
+        //font-size: 30px;
+        top: -15px;
+      }
+    }
+    &.active.asc{
+      .fa-chevron-up{
+        display: inline-block;
+      }
+      span:before{
+        //content: '\2303';
+        //font-size: 16px;
+        top: 0px;
+      }
+    }
+    &.active{
+      span:after,
+      span:before{
+        display: block;
+      }
+    }
+    &.active{
+      background: grey;
+    }
+  }
+  td:hover{
+    cursor: default;
+    span{
+      cursor: default;
+    }
+  }
+  td.navigable:hover{
+    span{
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  //table styles
+  .table-row{
+    .actions {
+      span{
+        display: inline-block;
+        float: right;
+        max-width: 50%;
+      }
+      .btn {
+        font-size: 16px;
+        padding: 0 10px;
+        color: #666;
+        float: right;
+        @include transition(color 0.3s ease);
+        &:hover {
+          color: blue;
+        }
+        &.remove {
+          &:hover {
+            color: blue;
+          }
+        }
+      }
+    }
+  }
+  // controls
+  .page,.size{
+    width: 50%;
+    float: left;
+    label{
+      text-transform: uppercase;
+    }
+  }
+  .page-wrapper, .size-wrapper{
+    div{
+      display: inline-block;
+    }
+  }
+  .page{
+    text-align: left;
+  }
+  .size{
+    text-align: right;
+    &.full{
+      width: 100%;
+    }
+  }
+  .page{
+    .page-status{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .prev, .next{
+      background: black;
+      width: 20px;
+      height: 20px;
+      color: grey;
+      &:after{
+        position: absolute;
+        top: 0;
+      }
+    }
+    .prev{
+      &:after{
+        content:'\25C0';
+        right: 6px;
+      }
+    }
+    .next{
+      &:after{
+        content:'\25B6';
+        left: 6px;
+      }
+    }
+  }
+  .size-item{
+    &.active{
+      background: black;
+      color: white;
+    }
+  }
+  //filters
+  .glyphicon-search{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .search-group{
+    position: relative;
+  }
+  .pagination{
+    margin: 0 0 10px;
+    > .active > a{
+      background: grey;
+      border-color: grey;
+    }
+    > li > a,
+    > li > span{
+      color: grey;
+    }
+  }
+}
+

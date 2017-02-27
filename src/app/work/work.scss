@@ -1,0 +1,14 @@
+ .work-block{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .projects{
+    	min-height: 400px;
+    	text-align: center;
+    	img{
+			max-height: 300px;
+			max-width: 100%;
+    		height: auto;
+    	}	
+    }
+ }

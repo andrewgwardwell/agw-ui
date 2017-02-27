@@ -1,0 +1,30 @@
+.fixed{
+	position: fixed;
+}
+
+.bottom{
+	bottom: 0;
+	margin-bottom: 0;
+}
+.quad,
+.svg-el{
+	width: 50%;
+	float: left;
+}
+
+.quad{
+	.jumbotron{
+		background: white;
+	}
+}
+.svg-elements{
+	width: 100%;
+	overflow: hidden;	
+	.el-one{
+		text-align: center;
+	}
+	.el-two{
+		margin-top: 20px;
+		text-align: center;
+	}
+}

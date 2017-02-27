@@ -1,0 +1,12 @@
+<div class="work-detail col-sm-12 col-md-12 col-lg-12">
+	<div class="viewing-box ">
+		<img src="{{wd.data.field_image}}" />
+		{{wd.data.title}}
+		{{wd.data.content}}
+		<div class="images">
+			<div class="image" ng-repeat="(key, value) in wd.data.field_gallery_images track by $index">
+				<img src = "{{value.image}}" title='{{value.title}}' />
+			</div>
+		</div>
+	</div>
+</div>

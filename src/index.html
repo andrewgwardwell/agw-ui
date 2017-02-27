@@ -23,9 +23,25 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container">
-        <div ui-view></div>
+    <div class="container-fluid">
+        <nav class="navbar col-sm-12 col-md-2">
+          <div class="menu" ng-controller='MenuController as menu' ng-mousemove="menu.glow($event)">
+            <div ui-sref='home' class="icon-container">
+                <svg class="icon"></svg>            
+            </div>
+            <ul class="nav navbar-nav">
+             <li>
+                <a ui-sref="home">Home</a>
+                <a ui-sref="work">Work</a>
+                <a ui-sref="resume">CV</a>
+             </li>
+          </div>
+        </nav>
+        <div class="col-sm-12 col-md-10">
+            <div ui-view></div>
+        </div>
     </div>
+
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->

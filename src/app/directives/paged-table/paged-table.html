@@ -1,0 +1,68 @@
+<div class="table-wrapper paged-table-wrapper">
+  <div class="filter-wrapper">
+    <div class="filters">
+      <paged-table-filter ng-repeat="filter in filters track by $index" filter="filter"></paged-table-filter>
+      <button class="btn btn-primary btn-negative clear-filters" ng-click="table.clearFilter()">Clear Filters</button>
+    </div>
+  </div>
+  <table class="table table-responsive" ng-class="{'full': totalRecords < pagesize}">
+    <thead>
+    <th ng-repeat="h in headers track by $index" ng-click="table.sortClick(h)" ng-class="{'sortable': h.sortable != false, 'active': table.sort == h.fieldName, 'desc': table.direction == 'DESC', 'asc': table.direction == 'ASC'}">
+      <span class="ng-class:h.fieldName">
+          {{h.displayName}}
+      </span>
+      <span class="fa fa-chevron-down"></span>
+      <span class="fa fa-chevron-up"></span>
+    </th>
+    <th class="text-right" ng-if="!noAction">
+      <span>Action</span>
+    </th>
+    </thead>
+    <tbody>
+    <tr class="table-row" ng-repeat="d in data track by $index">
+      <td ng-repeat="i in headers track by $index" ng-click="table.navigateItem(d, i)" ng-class="{'navigable': i.navigate}">
+        <span>
+          {{table.getValue(i, d)}}
+        </span>
+      </td>
+      <td class="actions text-right" class="actions text-right" ng-if="!noAction">
+        <span>
+          <button type="button" ng-click="table.removeItem(d)" class="btn btn-clear remove" title="Remove"><i class="fa fa-times"></i></button>
+        </span>
+        <span modal-form-open edit-data="d" modal-key="table.editEvent">
+          <button type="button"  ng-click="modal.open('lg')" class="btn btn-clear edit" title="Edit"><i class="fa fa-pencil"></i></button>
+        </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="controls">
+    <div class="page" ng-show="totalRecords > pagesize">
+      <!--<label class="controls-label">Pagination:</label>-->
+      <div class="page-wrapper">
+        <ul uib-pagination total-items="totalRecords" ng-model="table.page" items-per-page="pagesize" max-size="4" force-ellipses="true" class="pagination-sm" ng-change="table.updatePage()"></ul>
+      </div>
+    </div>
+    <div class="size" ng-class="{'full': totalRecords < pagesize}">
+      <!--<label class="controls-label">Results Per Page:</label>-->
+      <div class="size-wrapper">
+        <ul class="btn-group pagination pagination-sm">
+          <li class="size-item pagination-page" ng-class="{'active': pagesize == 10}">
+            <a ng-click="table.updateSize(10)">10</a>
+          </li>
+          <li class="size-item pagination-page" ng-class="{'active': pagesize == 25}">
+            <a ng-click="table.updateSize(25)">25</a>
+          </li>
+          <li class="size-item pagination-page" ng-class="{'active': pagesize == 50}">
+            <a ng-click="table.updateSize(50)">50</a>
+          </li>
+          <li class="size-item pagination-page" ng-class="{'active': pagesize == 100}">
+            <a ng-click="table.updateSize(100)">100</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
