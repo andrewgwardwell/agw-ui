@@ -1,11 +1,15 @@
 <div class="work-detail col-sm-12 col-md-12 col-lg-12">
-	<div class="viewing-box ">
-		<img src="{{wd.data.field_image}}" />
-		{{wd.data.title}}
-		{{wd.data.content}}
-		<div class="images">
-			<div class="image" ng-repeat="(key, value) in wd.data.field_gallery_images track by $index">
-				<img src = "{{value.image}}" title='{{value.title}}' />
+	<div class="viewing-box panel">
+		<div class="hero col-md-12 space-bottom" ng-click="wd.openModal({image: wd.data.field_image})">
+			<img class="img-responsive" src="{{wd.data.field_image}}" />			
+		</div>
+		<div class="wd-text col-md-12">
+			<h1>{{wd.data.title}}</h1>
+			<p>{{wd.data.content}}</p>
+		</div>
+		<div class="images space-bottom space-top col-md-12 no-padding">
+			<div class="image col-sm-12 col-md-4" ng-repeat="(key, value) in wd.data.field_gallery_images track by $index">
+				<img class="img-responsive justified-center" src = "{{value.image}}" title='{{value.title}}' ng-click="wd.openModal(value)"/>
 			</div>
 		</div>
 	</div>

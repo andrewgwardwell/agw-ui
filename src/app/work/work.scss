@@ -1,14 +1,51 @@
- .work-block{
+.work-block{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     .projects{
-    	min-height: 400px;
-    	text-align: center;
-    	img{
-			max-height: 300px;
-			max-width: 100%;
-    		height: auto;
-    	}	
+        min-height: 200px;
+        text-align: center;
+        margin: 20px auto;
+        .ent_title{
+            text-align: left;      
+        }
+        img{
+            max-width: 100%;
+            min-width: 100%;
+            height: auto;
+        }   
     }
  }
+
+ .searchbar{
+    position: relative;
+    input{
+        padding-left: 40px;
+    }
+    i{
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+ }
+
+
+@media(min-width: 992px){
+.work-list{
+    margin-top: 10px;
+    .dropdown-menu{
+        width: 97%;
+        border-radius: 0px;
+    }
+}
+.work-block{
+    margin-top: 20px;
+    .projects{
+        min-height: 400px;
+        img{
+            max-height: 300px;
+            min-width: auto;
+        }   
+    }
+ }
+}

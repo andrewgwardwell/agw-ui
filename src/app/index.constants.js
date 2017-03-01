@@ -6,7 +6,7 @@
     .module('agwUi')
     .constant('malarkey', malarkey)
     .constant('moment', moment)
-    .constant('_', window._)
-    .constant('ngSnap', window.Snap);
+    .constant('_', _)
+    .constant('ngSnap', Snap);
 
 })();

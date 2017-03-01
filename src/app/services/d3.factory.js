@@ -29,6 +29,6 @@
     return {
       d3: function() { return d.promise; }
     };
-  };
+  }
 
 })();

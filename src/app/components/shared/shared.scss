@@ -1,0 +1,29 @@
+.fixed{
+	position: fixed;
+}
+.bottom{
+	bottom: 0;
+	margin-bottom: 0;
+}
+.desktop-show{
+	display: none;
+}
+.space-bottom{
+	margin-bottom: 20px;
+}
+.space-top{
+	margin-top: 20px;
+}
+.no-padding{
+	padding-left: 0;
+	padding-right: 0;
+}
+
+@media(min-width: 992px){
+	.desktop-show{
+		display: block;
+	}
+	.mobile-show{
+		display: none;
+	}
+}

@@ -1,16 +1,23 @@
-<div class="col-sm-12">
-<form>
-	<div class="form-group">
-    <input type="text" ng-model="work.selectedSkill" placeholder="Find by Technology" uib-typeahead="skill as skill.name for skill in work.skills | filter:{name:$viewValue}" class="form-control" ng-change="work.filter()" typeahead-on-select="work.filterSkills($item, $model)">
-    	<span class="icon">
-    		<i class="fa fa-camera-retro"></i>    		
-    	</span>
-	</div>
-  </form>
-</div>
-<div class="work-block col-sm-12">
-    <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in work.projects track by $index" ng-click="work.goToDetail(value.nid, value)">
-        <img class="img-rounded" src="{{value.field_image}}" />
-        <div class="ent_title">{{value.title}}</div>
+<div class="work-list">
+    <div class="col-sm-12">
+    <form>
+        <div class="form-group searchbar">
+        <input type="text" ng-model="work.selectedSkill" placeholder="Find by Technology" uib-typeahead="skill as skill.name for skill in work.skills | filter:{name:$viewValue}" class="form-control" ng-change="work.filter()" typeahead-on-select="work.filterSkills($item, $model)">
+        <span class="icon">
+            <i class="fa fa-search"></i>          
+        </span>
+        </div>
+      </form>
+    </div>
+    <div class="work-block col-sm-12 no-padding">
+        <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in work.projects track by $index" ng-click="work.goToDetail(value.nid, value)">
+            <img class="" src="{{value.field_image}}" />
+            <div class="ent_title">
+                <h3>
+                    {{value.title}}    
+                </h3>
+            </div>
+        </div>
     </div>
 </div>
+

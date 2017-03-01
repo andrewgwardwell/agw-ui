@@ -7,36 +7,33 @@
 
     function MenuController($scope, $log, $timeout, $interval, ngSnap, _) {
         var vm = this;
+        vm.collapsed = true;
         vm.glow = _.debounce(glowFunc, 50);
 
-        var icon = ngSnap('.icon');
+        var icon = ngSnap('.icon-svg');
+        var iconMobile = ngSnap('.icon-mobile');
 
-        function glowFunc(e){
-        	var plot1 = e.clientX > 75 ? -9 : 9;
-			var plot2 = e.clientY > 75 ? -9 : 9;
-			var old = vm.sum;
-			vm.sum = plot1 + plot2;
-			makeglow(old > 0);
+        function glowFunc(e) {
+            var plot1 = e.clientX > 75 ? -9 : 9;
+            var plot2 = e.clientY > 75 ? -9 : 9;
+            var old = vm.sum;
+            vm.sum = plot1 + plot2;
+            makeglow(old > 0);
         }
 
-        function glowRings(mobile) {
-            //This can be the glowing function
-
-            // Then use it as a fill on big circle
-            if (mobile) {
-                var ic_3 = icon.circle(75, 75, 20);
-                var ic_4 = icon.circle(75, 75, 10);
-                var ic_5 = icon.circle(75, 75, 5);
-                vm.small_rings = icon.group(ic_3, ic_4, ic_5);
-            } else {
-                var ic = icon.circle(75, 75, 50);
-                var ic_1 = icon.circle(75, 75, 40);
-                var ic_2 = icon.circle(75, 75, 30);
-                var ic_3 = icon.circle(75, 75, 20);
-                var ic_4 = icon.circle(75, 75, 10);
-                var ic_5 = icon.circle(75, 75, 5);
-                vm.small_rings = icon.group(ic, ic_1, ic_2, ic_3, ic_4, ic_5);
-            }
+        function glowRings() {
+            // var mic = iconMobile.circle(25, 25, 30);
+            var mic = iconMobile.circle(25, 25, 20);
+            var mic_2 = iconMobile.circle(25, 25, 10);
+            var mic_3 = iconMobile.circle(25, 25, 5);
+            vm.m_small_rings = iconMobile.group(mic, mic_2, mic_3);
+            var ic = icon.circle(75, 75, 50);
+            var ic_1 = icon.circle(75, 75, 40);
+            var ic_2 = icon.circle(75, 75, 30);
+            var ic_3 = icon.circle(75, 75, 20);
+            var ic_4 = icon.circle(75, 75, 10);
+            var ic_5 = icon.circle(75, 75, 5);
+            vm.small_rings = icon.group(ic, ic_1, ic_2, ic_3, ic_4, ic_5);
 
             vm.small_rings.attr({
                 //  with a masking effect the darkening works the same way as in photoshop
@@ -56,47 +53,44 @@
             ic_5.attr({
                 fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
             });
-            if (!mobile) {
-                ic.attr({
-                    //  stroke: "#000",
-                    strokeWidth: 2,
-                    fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
-                        //  mask: small_rings
-                });
-                ic_1.attr({
-                    fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
-                });
-
-                ic_2.attr({
-                    fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
-                });
-            }
-            var colorChanging = $interval(function(){colorChange();}, 2500);
+            mic.attr({
+                //  stroke: "#000",
+                strokeWidth: 2,
+                fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
+                    //  mask: small_rings
+            });
+            mic_2.attr({
+                fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
+            });
+            mic_3.attr({
+                fill: '#' + Math.floor(Math.random() * 16777215).toString(16)
+            });
+            $interval(function() { colorChange(); }, 2500);
         }
 
-        function colorChange(){
+        function colorChange() {
             for (var n = 0; n < 5; n++) {
                 var scolor = '#' + Math.floor(Math.random() * 16777215).toString(16),
-               		color = '#' + Math.floor(Math.random() * 16777215).toString(16);
-				vm.small_rings[n].animate({ stroke: scolor }, 5000);
-				vm.small_rings[n].animate({ fill: color }, 5000, mina.ease);
+                    color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+                vm.small_rings[n].animate({ stroke: scolor }, 5000);
+                vm.small_rings[n].animate({ fill: color }, 5000, mina.ease);
             }
         }
 
 
         function makeglow(old) {
-        	var op = old ?' add' : 'minus';
+            var op = old ? ' add' : 'minus';
             for (var n = 0; n < 5; n++) {
-                var val, stroke, scolor, radius = parseInt(vm.small_rings[n].attr('r')),
+                var val, scolor, radius = parseInt(vm.small_rings[n].attr('r')),
                     color = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 if (op == 'add') {
                     scolor = '#' + Math.floor(Math.random() * 16777215).toString(16);
                     val = radius + vm.sum;
-                    stroke = 3;
+                    // stroke = 3;
                 } else {
                     scolor = 'white';
                     val = radius - vm.sum;
-                    stroke = 1;
+                    // stroke = 1;
                 }
                 if (val > 0 && val < 75) {
                     vm.small_rings[n].animate({ r: val }, 400, mina.bounce);
@@ -118,6 +112,6 @@
             }
         }
 
-    	glowRings(false);
-    };
+        glowRings(false);
+    }
 })();

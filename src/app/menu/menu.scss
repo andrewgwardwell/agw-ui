@@ -1,4 +1,102 @@
-.icon{
+.menu{
+	margin-top: 20px;
+	.navbar-toggle{
+		padding: 9px 0;
+		margin-right: 5px;
+    	margin-top: 4px;
+    	display: block;
+    	float: left;
+    	width: 10%;
+		.icon-bar{
+			border-bottom: 4px solid black;
+			width: 30px;
+		}
+	}
+	.icon-mobile{
+		display: block;
+		width: 17.5%;
+    	float: left;
+	}
+	li a{
+		color: #666687; 
+	}
+}
+.navbar-header .name {
+    width: 70%;
+    display: block;
+    float: left;
+	h4{
+		letter-spacing: .075em;
+		margin-bottom: 5px;
+		margin-top: 15px;
+		font-family: 'Muli';
+	}
+}
+.navbar{
+	margin-bottom: 10px;
+}
+.icon-mobile{
+	width: 50px;
+	height: 50px;
+}
+// desktop
+.icon-svg{
 	width:150px;
 	height:150px; 
+}
+
+@media (min-width: 768px){
+
+   .menu{
+   	.navbar-header{
+	    .name{
+	    	width: 50%;
+	    }
+	    .navbar-toggle{
+	    	display: none;
+	    }
+   	}
+   	.navbar-nav{
+		float: right;
+   	}
+   	}
+
+}
+
+
+@media(min-width: 992px){
+	.menu{
+		margin-top: 0;
+		.name {
+    		margin-top: -15px;
+    		&:hover{
+    			cursor: pointer;
+    			h4{
+    				color: rgba(0,0,0, .5);
+    			}
+    		}
+    		h4{
+    			letter-spacing: .075em;
+    			padding-left: 15px;
+    			margin-bottom: 5px;
+    			font-family: 'Muli';
+    		}
+
+		}
+		.navbar-nav{
+			float: left;
+   		}
+	}
+	.nav{
+		width: 100%;
+		li{
+			width: 100%;	
+		}
+	}
+	.navbar{
+		margin-top: 20px;
+	}
+	.navbar-collapse{
+		height: auto !important;
+	}
 }

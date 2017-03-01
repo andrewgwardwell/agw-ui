@@ -1,30 +1,85 @@
-.fixed{
-	position: fixed;
+.morning {
+	@include linear-gradient(darkblue, purple, red, orange, pink, white);
+    h1{
+        color: lightblue;
+    }
+    p, i{
+    	color: darkblue;
+    }
 }
 
-.bottom{
-	bottom: 0;
-	margin-bottom: 0;
+.afternoon {
+	@include linear-gradient(lightblue, white, pink);
+    h1, p, i{
+        color: orange;
+    }
 }
-.quad,
-.svg-el{
-	width: 50%;
-	float: left;
+
+.evening {
+	@include linear-gradient(black, darkblue, purple, purple, darkblue, black);
+    h1, p, i{
+        color: #FFF;
+    }
+}
+
+.super-late {
+	@include linear-gradient(black, darkblue, black);
+    h1, p, i{
+        color: #FFF;
+    }
 }
 
 .quad{
-	.jumbotron{
-		background: white;
-	}
-}
-.svg-elements{
 	width: 100%;
-	overflow: hidden;	
-	.el-one{
-		text-align: center;
+	float: left;
+	.jumbotron {
+		background: transparent
+    }
+    i{
+        font-size: 32px;
+        padding: 5px;
+    }
+}
+.text-quad{
+        background: rgba(255,255,255, .25);
+}
+.svg-el{
+	display: none;
+	float: left;
+}
+.svg-elements {
+    overflow: hidden;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: 100%;
+    position: fixed;
+}
+
+@media(min-width:992px) {
+	.quad-mobile{
+		display: none;
 	}
-	.el-two{
-		margin-top: 20px;
-		text-align: center;
-	}
+    .quad,
+    .svg-el {
+        width: 50%;
+    }
+    .quad {
+        h1 {
+            margin-top: 0;
+        }
+    }
+    .svg-el{
+    	display: block;
+    }
+    .svg-elements {
+        max-width: 100%;
+        .el-one {
+            text-align: center;
+        }
+        .el-two {
+            margin-top: 20px;
+            text-align: center;
+        }
+    }
 }

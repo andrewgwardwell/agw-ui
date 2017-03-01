@@ -4,16 +4,19 @@
         .module('agwUi')
         .controller('HomeController', HomeController);
 
-    function HomeController(ngSnap, $timeout) {
+    function HomeController(ngSnap, util) {
         var vm = this;
-        vm.greeting = 'Hey There';
+        var time = util.getGreeting();
+        vm.greeting = time.greeting;
+        vm.period = time.period;
         vm.stick_count = 0;
-        var s = Snap('#svg');
-        var sV = Snap('#svg-two');
+        var s = ngSnap('#svg');
+        var sV = ngSnap('#svg-two');
+        // var mina;
 
         function getRandomArbitrary(min, max) {
-    		return Math.random() * (max - min) + min;
-    	}
+            return Math.random() * (max - min) + min;
+        }
 
         function boxOLines() {
             //    top
@@ -38,9 +41,10 @@
             });
             line.animate({ x1: x1 - 20 }, 100, mina.bounce, function() {
                 var tilt = getRandomArbitrary(2, 50),
-                    tilt_2 = getRandomArbitrary(1, 46);
-                this.animate({ y1: pointer }, 400, mina.bounce);
-                this.animate({ y2: pointer }, 400, mina.bounce);
+                    tilt_2 = getRandomArbitrary(1, 46),
+                    inst = this;
+                inst.animate({ y1: pointer }, 400, mina.bounce);
+                inst.animate({ y2: pointer }, 400, mina.bounce);
                 if (tilt < 25) {
                     tilt = pointer - tilt;
                 } else {
@@ -51,8 +55,9 @@
                 } else {
                     tilt_2 = pointer + tilt_2;
                 }
-                this.animate({ y1: tilt }, 700, mina.bounce, function() {
-                    this.animate({ y1: tilt_2 }, 200, mina.bounceslide);
+                inst.animate({ y1: tilt }, 700, mina.bounce, function() {
+                    var instW = this;
+                    instW.animate({ y1: tilt_2 }, 200, mina.bounceslide);
                     if (pointer > end && dir === 'front') {
                         dir = 'back';
                     }
@@ -84,12 +89,13 @@
             });
             //  move the line little from the start in this case lengthing the height of the line
             line.animate({ y1: y1 + 20 }, 100, mina.bounce, function() {
+                var inst = this;
                 //     we are going to tilt the line one way or the other increments 2-50
                 var tilt = getRandomArbitrary(2, 50),
                     tilt_2 = getRandomArbitrary(1, 46);
                 //    everytime we circle through we are moving the line along then tilting it later
-                this.animate({ x1: pointer }, 400, mina.bounce);
-                this.animate({ x2: pointer }, 400, mina.bounce);
+                inst.animate({ x1: pointer }, 400, mina.bounce);
+                inst.animate({ x2: pointer }, 400, mina.bounce);
                 //    tilting it from the start based on random number
                 if (tilt < 25) {
                     tilt = pointer - tilt;
@@ -103,8 +109,9 @@
                     tilt_2 = pointer + tilt_2;
                 }
                 //    make the tilt happen
-                this.animate({ x1: tilt }, 700, mina.bounce, function() {
-                    this.animate({ x2: tilt_2 }, 200, mina.bounceslide);
+                inst.animate({ x1: tilt }, 700, mina.bounce, function() {
+                    var instS = this;
+                    instS.animate({ x2: tilt_2 }, 200, mina.bounceslide);
                     //      now we determin the direction we are going on the next time around
                     if (pointer > end && dir === 'front') {
                         //        the start or pointer is more than the end mark turn around
@@ -128,9 +135,9 @@
                     }
                 });
             });
-        };
-    
-        boxOLines(); 
-    };
+        }
+
+        boxOLines();
+    }
 
 })();
