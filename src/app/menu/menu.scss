@@ -8,7 +8,7 @@
     	float: left;
     	width: 10%;
 		.icon-bar{
-			border-bottom: 4px solid black;
+			border-bottom: 4px solid $font-base;
 			width: 30px;
 		}
 	}
@@ -18,7 +18,7 @@
     	float: left;
 	}
 	li a{
-		color: #666687; 
+		color: $font-heading; 
 	}
 }
 .navbar-header .name {

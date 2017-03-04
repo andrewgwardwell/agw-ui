@@ -27,10 +27,13 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+@import './components/shared/variables';
 @import './components/shared/fonts';
 @import './components/shared/mixins';
 body{
 	font-family: 'Nunito Sans', Helvetica, Sans;
+	h1,h2,h3,h4,h5{color: $font-heading;}
+	p,span,i{color:$font-base;}
 }
 
 /**

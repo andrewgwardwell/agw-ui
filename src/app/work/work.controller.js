@@ -6,7 +6,7 @@
         .controller('WorkController', WorkController);
 
     /** @ngInject */
-    function WorkController(projects, books, $log, $state, _) {
+    function WorkController(projects, $log, $state){
         // var _ = lodash;
         var vm = this;
         vm.data = [];
@@ -39,9 +39,9 @@
                 });
                 return truth;
             });
-        }
+        };
 
-        function getByTerms() {
+        function getByTerms(){
             // books.query();
             projects.getProjects({}, function(response) {
                 $log.info('Success! Got projects.');
@@ -55,15 +55,6 @@
             });
         }
 
-        // function extrractFieldSingle(field, idKey, data) {
-        //     var field = data[field].und;
-        //     if (field & field.length > 0) {
-        //         return field[0][idKey];
-        //     } else {
-        //         return false;
-        //     }
-        // }
-
         function getAllSkills(data) {
             var skills = [];
             _.each(data, function(s) {
@@ -71,7 +62,8 @@
             });
             $log.info(skills);
             return skills;
-        }
+        };
+
         getByTerms();
     }
 })();

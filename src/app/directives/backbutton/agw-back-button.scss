@@ -1,0 +1,44 @@
+.agw-back-button{
+	position: absolute;
+    background: rgba(255, 255, 255, .5);
+    z-index: 999;
+    width: 125px;
+   	overflow: hidden;
+    height: 50px;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 30px 0;
+    padding: 15px 0 0 45px;
+    -webkit-transition: width 1s, opacity 1s, transform 2s;
+    transition: width 1s, opacity 1s, transform 2s;
+    i, span{
+		color: $font-heading;
+    }
+    i{
+		font-size: 15px;
+    }
+    span{
+    	vertical-align: top;
+    	font-weight: 700;
+    	display: inline-block;
+    	-webkit-transition:  opacity 1s ease, margin 1s ease, transform 2s;
+    	transition: opacity 1s ease, margin 1s ease, transform 2s;
+    }
+}
+
+@media(min-width: 992px){
+	.agw-back-button{
+		width: 75px;
+		&:hover{
+	    	width: 125px;
+	    	span{
+	    		opacity: 1;
+	    		margin-top: 0;
+	    	}
+    	}
+    	span{
+    		opacity: 0;
+	    	margin-top: -70px;
+    	}
+	}
+}

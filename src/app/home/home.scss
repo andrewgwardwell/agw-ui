@@ -1,31 +1,52 @@
 .morning {
-	@include linear-gradient(darkblue, purple, red, orange, pink, white);
+    .up{
+        // @include linear-gradient(180deg, transparent, #DEC68C);
+        background: rgba(#9BA2A9, .125);
+    }
     h1{
-        color: lightblue;
+        color: #9BA2A9;
     }
     p, i{
-    	color: darkblue;
+        color: #9BA2A9;
     }
 }
 
 .afternoon {
-	@include linear-gradient(lightblue, white, pink);
-    h1, p, i{
-        color: orange;
+    .up{
+        // @include linear-gradient(180deg, transparent, #DEC68C);
+        background: rgba(#9BA2A9, .125);
+    }
+    h1{
+        color: #9BA2A9;
+    }
+    p, i{
+        color: #9BA2A9;
     }
 }
 
 .evening {
-	@include linear-gradient(black, darkblue, purple, purple, darkblue, black);
-    h1, p, i{
-        color: #FFF;
+    .up{
+        // @include linear-gradient(180deg, transparent, #DEC68C);
+        background: rgba(#9BA2A9, .125);
+    }
+    h1{
+        color: #9BA2A9;
+    }
+    p, i{
+        color: #9BA2A9;
     }
 }
 
 .super-late {
-	@include linear-gradient(black, darkblue, black);
-    h1, p, i{
-        color: #FFF;
+    .up{
+        // @include linear-gradient(180deg, transparent, #DEC68C);
+        background: rgba(#9BA2A9, .125);
+    }
+    h1{
+        color: #9BA2A9;
+    }
+    p, i{
+        color: #9BA2A9;
     }
 }
 
@@ -33,11 +54,32 @@
 	width: 100%;
 	float: left;
 	.jumbotron {
-		background: transparent
+		background: transparent;
+    }
+    h1{
+        letter-spacing: .0125em;
+        text-transform: uppercase;
+        color: #9BA2A9;
     }
     i{
         font-size: 32px;
         padding: 5px;
+        &:hover{
+            color: lighten(#9BA2A9, 5%);
+        }
+    }
+    p{
+        color: #9BA2A9;
+    }
+    .up{
+        background: rgba(#9BA2A9, .125);
+    }
+    a{
+        text-decoration: underline;
+        color: darken(#9BA2A9, 20%);
+        &:hover{
+            color: lighten(#9BA2A9, 5%);
+        }
     }
 }
 .text-quad{

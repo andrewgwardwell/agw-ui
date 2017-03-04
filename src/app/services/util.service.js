@@ -10,7 +10,7 @@
             var greeting, period;
             var time = moment().format('H');
             if(time > 6 && time <= 11){
-                greeting = 'Good Morning!';
+                greeting = 'Morning!';
                 period = 'morning';
             } else if (time > 11 && time <= 18){
                 greeting = 'Afternoon!';
@@ -19,7 +19,7 @@
                 greeting = "Evening!";
                 period = 'evening';
             } else {
-                greeting = "Go to sleep!"
+                greeting = "Go Sleep!"
                 period = 'super-late';
             }
             return {greeting: greeting, period: period};
