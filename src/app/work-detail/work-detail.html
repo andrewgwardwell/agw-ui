@@ -1,8 +1,8 @@
 <div class="work-detail col-sm-12 col-md-12 col-lg-12">
 	<agw-back-button section='work'></agw-back-button>
 	<div class="viewing-box panel">
-		<div class="hero col-md-12 space-bottom" ng-click="wd.openModal({image: wd.data.field_image})">
-			<img class="img-responsive" src="{{wd.data.field_image}}" />			
+		<div class="hero col-md-12 space-bottom" ng-click="wd.openModal(wd.data.field_image)">
+			<img class="img-responsive" srcset="{{wd.heroString}}" src="{{wd.data.field_image.md_img}}" />			
 		</div>
 		<div class="wd-text col-md-12">
 			<h1>{{wd.data.title}}</h1>
@@ -10,7 +10,7 @@
 		</div>
 		<div class="images space-bottom space-top col-md-12 no-padding">
 			<div class="image col-sm-12 col-md-4" ng-repeat="(key, value) in wd.data.field_gallery_images track by $index">
-				<img class="img-responsive justified-center" src = "{{value.image}}" title='{{value.title}}' ng-click="wd.openModal(value)"/>
+				<img class="img-responsive justified-center" srcset="{{wd.srcSet(value, 'image')}}"  sizes="(min-width: 992px) 1em, 100vw" src = "{{value.image.md_img}}" title='{{value.title}}' ng-click="wd.openModal(value.image)"/>
 			</div>
 		</div>
 	</div>

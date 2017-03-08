@@ -4,7 +4,7 @@
         .module('agwUi')
         .controller('HomeController', HomeController);
 
-    function HomeController(ngSnap, util) {
+    function HomeController(ngSnap, util, projects){
         var vm = this;
         var time = util.getGreeting();
         vm.greeting = time.greeting;

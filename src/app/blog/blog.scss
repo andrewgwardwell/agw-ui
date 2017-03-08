@@ -1,0 +1,33 @@
+.term{
+	display: inline-block;
+    padding: 0 10px;
+    margin: 2.5px;
+    background: $opaque-bg;
+    border-radius: 5px;
+    h5{
+    	color: $font-base;
+    }
+    &:hover{
+    	h5{
+    		color: $font-hover;
+    	}
+    }
+}
+
+@media(min-width: 992px){
+	.blog{
+		h3:hover{
+    		color: $font-base;
+    		cursor: pointer;
+		}
+	}
+	.term{
+	    &:hover{
+	    	background: $opaque-bg-hover;
+	    	h5{
+	    		color: $font-hover;
+	    		cursor: pointer;
+	    	}
+	    }
+	}
+}

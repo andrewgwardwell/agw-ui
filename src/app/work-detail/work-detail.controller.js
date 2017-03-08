@@ -6,12 +6,13 @@
     .controller('WorkDetailController', WorkDetailController);
 
   /** @ngInject */
-  function WorkDetailController($log, $stateParams, projects, $uibModal) {
+  function WorkDetailController($log, $stateParams, projects, $uibModal, util) {
     // var _ = lodash;
     var vm = this;
     vm.nid = $stateParams.id;
     vm.openModal = _openModal;
     vm.openHeroModal = _openModal;
+    vm.srcSet = util.srcSet;
     $log.info(vm.nid);
 
     function _getById(){
@@ -19,6 +20,7 @@
       projects.getProject({id: vm.nid}, function(response){
           $log.info('Success! Got project.');
           vm.data = response;
+          vm.heroString = vm.srcSet(vm.data, 'field_image');
           vm.fetching = false;
         }, function(){
           $log.info('Error! Project fetch failed.');
@@ -26,10 +28,7 @@
         });
     }
 
-
     function _openModal(image){
-      $log.info(image);
-
       vm.modalInstance = $uibModal.open({
         animation: true,
         ariaLabelledBy: 'modal-title',

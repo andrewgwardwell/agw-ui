@@ -34,6 +34,27 @@
         controller: 'WorkDetailController',
         controllerAs: 'wd'
     };
+    var blog = {
+        url: '/blog',
+        templateUrl: 'app/blog-parent/blog-parent.html',
+        controller: 'BlogParentController',
+        controllerAs: 'blogParent',
+        params: {
+          autoActivateChild: 'blog.list'
+        }
+    };
+    var blogList = {
+        url: '/list',
+        templateUrl: 'app/blog/blog.html',
+        controller: 'BlogController',
+        controllerAs: 'blog'
+    };
+    var blogDetail = {
+        url: '/:id',
+        templateUrl: 'app/blog-detail/blog-detail.html',
+        controller: 'BlogDetailController',
+        controllerAs: 'bd'
+    };
     var contact = {
         url: '/contact',
         templateUrl: 'app/contact/contact.html',
@@ -48,6 +69,9 @@
       .state('work.list', workList)
       .state('work.detail', workDetail)
       .state('work', work)
+      .state('blog.list', blogList)
+      .state('blog.detail', blogDetail)
+      .state('blog', blog)
       .state('contact', contact);
 
     $urlRouterProvider.otherwise('/');

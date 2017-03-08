@@ -1,11 +1,18 @@
+.work-list{
+    position: relative;
+}
+
 .work-block{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
     .projects{
         min-height: 200px;
         text-align: center;
-        margin: 20px auto;
+        margin: 20px 0;
         .ent_title{
             text-align: left;      
         }
@@ -29,17 +36,91 @@
     }
  }
 
+.btn-skills{
+    width: 100%;
+    &:hover{
+        background: rgba(#F8BDA1, .5); 
+        border-color: white;  
+        span{
+            color: white;
+        }      
+    }
+}
+
+ .work-skills{
+    display: none;
+    background: rgba(#F8BDA1, .85);
+    position: fixed;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 100%;
+    top: 0;
+    width: 100%;
+    h3{
+        color: white;
+        font-size: 32px;
+    }
+    .icon{
+        position: absolute;
+        top: 0;
+        left: 90%;
+        width: 50px;
+        height: 50px;
+        z-index: 9999;
+        -webkit-transition: transform 1s;
+        transition: transform 1s;
+        i{
+            color: white;
+            font-size: 32px;
+            -webkit-transition: color 1s;
+            transition: color 1s;
+        }
+    }
+    .skill{
+        width: 100%;
+    }
+    .skill-scroll{
+        ms-overflow-y: scroll;
+        overflow-y: scroll;
+    }
+    &.skills-open{
+        display: flex;
+    }
+ }
+
 
 @media(min-width: 992px){
 .work-list{
-    margin-top: 10px;
+    .search-holder{
+        margin-top: 10px;
+    }
     .dropdown-menu{
         width: 97%;
         border-radius: 0px;
     }
 }
+.work-skills{
+    flex-direction: row;
+    .icon{
+        left: 80%;
+    }
+    .icon:hover{
+        cursor: pointer;
+        -webkit-transform: scale(.9);
+        transform: scale(.9);
+        i{
+                color: lighten(#F8BDA1, 50%);
+        }
+        h3{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+    .skill{
+        width: 33%;
+    } 
+}
 .work-block{
-    margin-top: 20px;
     .projects{
         min-height: 400px;
         img{

@@ -3,10 +3,10 @@
 
     angular
         .module('agwUi')
-        .controller('WorkController', WorkController);
+        .controller('BlogController', BlogController);
 
     /** @ngInject */
-    function WorkController(projects, $log, $state, util){
+    function BlogController(posts, $log, $state, $sce, util){
         // var _ = lodash;
         var vm = this;
         vm.data = [];
@@ -15,21 +15,26 @@
         vm.selectedSkill = '';
         vm.filter = filterSkills;
         vm.filterSkills = filterSkills;
-        vm.srcSet = util.srcSet;
         vm.displaySkills = false;
 
         vm.goToDetail = function(id, value) {
-            $state.go('work.detail', { id: id, node: value });
+            $state.go('blog.detail', { id: id, node: value });
         };
 
-        vm.goToSkill = function(value) {
+        vm.goToSkill = function(value, toggle = true) {
             vm.selectedSkill = value;
             vm.filterSkills({}, value);
-            vm.skillsToggle();
+            if(toggle){
+                vm.skillsToggle();
+            }
         };
 
         vm.skillsToggle = function(){
             vm.displaySkills = !vm.displaySkills;
+        };
+
+        vm.deliberatelyTrustDangerousSnippet = function(text){
+            return $sce.trustAsHtml(text);
         };
 
         function filterSkills(item, model) {
@@ -39,7 +44,7 @@
             } else {
                 ct = vm.selectedSkill.toLowerCase();
             }
-            vm.projects = _.filter(vm.data, function(i) {
+            vm.posts = _.filter(vm.data, function(i) {
                 if (ct == '') {
                     return true;
                 }
@@ -53,12 +58,12 @@
             });
         };
 
-        function getByTerms(){
+        function getPosts(){
             // books.query();
-            projects.getProjects({}, function(response) {
+            posts.query({}, function(response) {
                 $log.info('Success! Got projects.');
                 vm.data = response;
-                vm.projects = response;
+                vm.posts = response;
                 vm.skills = _.uniq(_.flatten(getAllSkills(response)), function(item) {
                     return item.tid;
                 });
@@ -76,6 +81,6 @@
             return skills;
         };
 
-        getByTerms();
+        getPosts();
     }
 })();

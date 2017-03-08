@@ -1,5 +1,5 @@
 <div class="work-list">
-    <div class="col-sm-12">
+    <div class="col-sm-12 search-holder">
     <form>
         <div class="form-group searchbar">
         <input type="text" ng-model="work.selectedSkill" placeholder="Find by Technology" uib-typeahead="skill as skill.name for skill in work.skills | filter:{name:$viewValue}" class="form-control" ng-change="work.filter()" typeahead-on-select="work.filterSkills($item, $model)">
@@ -9,12 +9,31 @@
         </div>
       </form>
     </div>
+    <div class="col-sm-12">
+        <div class="btn btn-default btn-skills" ng-click="work.skillsToggle()">
+            <span>
+                View Skills                
+            </span>
+        </div>
+    </div>
     <div class="work-block col-sm-12 no-padding">
         <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in work.projects track by $index" ng-click="work.goToDetail(value.nid, value)">
-            <img class="" src="{{value.field_image}}" />
+            <img class="" srcset="{{work.srcSet(value, 'responsive_images')}}" sizes="(min-width:992px) 33vw, 100vw" src="{{value.responsive_images.md_img}}" />
             <div class="ent_title">
                 <h3>
                     {{value.title}}    
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="work-skills col-sm-12 no-padding" ng-class="{'skills-open': work.displaySkills}">
+        <div class="skill-scroll">
+            <span class="icon">
+                <i class="fa fa-close" ng-click="work.skillsToggle()"></i>          
+            </span>
+            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in work.skills track by $index" ng-click="work.goToSkill(skill)">
+                <h3 class="skill">
+                    {{skill.name}}   
                 </h3>
             </div>
         </div>

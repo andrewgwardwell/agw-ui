@@ -35,6 +35,9 @@ body{
 	h1,h2,h3,h4,h5{color: $font-heading;}
 	p,span,i{color:$font-base;}
 }
+.outside-stopped{
+  max-width: 1280px;
+}
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

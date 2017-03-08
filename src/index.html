@@ -24,7 +24,7 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <div class="container-fluid no-padding">
+    <div class="container-fluid no-padding outside-stopped">
         <nav class="navbar col-sm-12 col-md-2 no-padding" role="navigation">
             <div class="menu" ng-controller='MenuController as menu'>
                 <div class="navbar-header mobile-show">
@@ -56,6 +56,9 @@
                         </li>
                         <li>
                             <a ui-sref="work" ng-click="menu.collapsed = !menu.collapsed">Work</a>
+                        </li>
+                        <li>
+                            <a ui-sref="blog" ng-click="menu.collapsed = !menu.collapsed">Blog</a>
                         </li>
                         <li>
                             <a ui-sref="contact" ng-click="menu.collapsed = !menu.collapsed">Contact</a>

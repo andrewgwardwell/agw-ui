@@ -1,0 +1,50 @@
+<div class="work-list blog">
+    <div class="col-sm-12 search-holder">
+    <form>
+        <div class="form-group searchbar">
+        <input type="text" ng-model="blog.selectedSkill" placeholder="Find by Technology" uib-typeahead="skill as skill.name for skill in blog.skills | filter:{name:$viewValue}" class="form-control" ng-change="blog.filter()" typeahead-on-select="blog.filterSkills($item, $model)">
+        <span class="icon">
+            <i class="fa fa-search"></i>          
+        </span>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-12">
+        <div class="btn btn-default btn-skills" ng-click="blog.skillsToggle()">
+            <span>
+                View Skills                
+            </span>
+        </div>
+    </div>
+    <div class="work-block col-sm-12 no-padding">
+        <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in blog.posts track by $index">
+            <div class="ent_title">
+                <h3 ng-click="blog.goToDetail(value.nid, value)">
+                    {{value.title}}    
+                </h3>
+                <div ng-bind-html="blog.deliberatelyTrustDangerousSnippet(value.summary)">
+                </div>
+                <div class="terms">
+                    <div class="term" ng-repeat="(key, term) in value.terms track by $index" ng-click="blog.goToSkill(term, false)">
+                        <h5 class="skill">
+                            {{term.name}}   
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="work-skills col-sm-12 no-padding" ng-class="{'skills-open': blog.displaySkills}">
+        <div class="skill-scroll">
+            <span class="icon">
+                <i class="fa fa-close" ng-click="blog.skillsToggle()"></i>          
+            </span>
+            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in blog.skills track by $index" ng-click="blog.goToSkill(skill)">
+                <h3 class="skill">
+                    {{skill.name}}   
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
