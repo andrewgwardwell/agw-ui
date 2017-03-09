@@ -1,0 +1,10 @@
+<div class="work-detail blog-detail col-sm-12 col-md-12 col-lg-12">
+	<agw-back-button section='blog'></agw-back-button>
+	<div class="viewing-box panel">
+		<div class="wd-text col-md-12">
+			<h1>{{bd.data.title}}</h1>
+			<div ng-bind-html="bd.trustTextHtml(bd.data.content)">
+            </div>
+		</div>
+	</div>
+</div>

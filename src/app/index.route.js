@@ -9,13 +9,13 @@
   function routerConfig($stateProvider, $urlRouterProvider) {
     var home = {
         url: '/',
-        templateUrl: 'app/home/home.html',
+        templateUrl: 'app/pages/home/home.html',
         controller: 'HomeController',
         controllerAs: 'home'
     };
     var work = {
         url: '/work',
-        templateUrl: 'app/work-parent/work-parent.html',
+        templateUrl: 'app/pages/work-parent/work-parent.html',
         controller: 'WorkParentController',
         controllerAs: 'workParent',
         params: {
@@ -24,19 +24,19 @@
       };
     var workList = {
         url: '/list',
-        templateUrl: 'app/work/work.html',
+        templateUrl: 'app/pages/work/work.html',
         controller: 'WorkController',
         controllerAs: 'work'
     };
     var workDetail = {
         url: '/:id',
-        templateUrl: 'app/work-detail/work-detail.html',
+        templateUrl: 'app/pages/work-detail/work-detail.html',
         controller: 'WorkDetailController',
         controllerAs: 'wd'
     };
     var blog = {
         url: '/blog',
-        templateUrl: 'app/blog-parent/blog-parent.html',
+        templateUrl: 'app/pages/blog-parent/blog-parent.html',
         controller: 'BlogParentController',
         controllerAs: 'blogParent',
         params: {
@@ -45,19 +45,19 @@
     };
     var blogList = {
         url: '/list',
-        templateUrl: 'app/blog/blog.html',
+        templateUrl: 'app/pages/blog/blog.html',
         controller: 'BlogController',
         controllerAs: 'blog'
     };
     var blogDetail = {
         url: '/:id',
-        templateUrl: 'app/blog-detail/blog-detail.html',
+        templateUrl: 'app/pages/blog-detail/blog-detail.html',
         controller: 'BlogDetailController',
         controllerAs: 'bd'
     };
     var contact = {
         url: '/contact',
-        templateUrl: 'app/contact/contact.html',
+        templateUrl: 'app/pages/contact/contact.html',
         controller: 'ContactController',
         controllerAs: 'contact',
         params: {

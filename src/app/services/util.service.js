@@ -3,7 +3,7 @@
     angular.module('agwUi')
         .factory('util', utilsService);
 
-    function utilsService(moment) {
+    function utilsService(moment, $sce) {
         function cacheSet(name, data) {
 
         }
@@ -39,6 +39,10 @@
             return { greeting: greeting, period: period };
         }
 
+        function trustTextHtml(text){
+            return $sce.trustAsHtml(text);
+        };
+
         // function loadVendorsList() {
         //     if ($window.sessionStorage['vendorsList']) {
         //         vendorsList = angular.fromJson($window.sessionStorage['vendorsList']);
@@ -64,7 +68,8 @@
             getGreeting: getGreeting,
             cacheGet: cacheGet,
             cacheSet: cacheSet,
-            srcSet: srcSet
+            srcSet: srcSet,
+            trustTextHtml: trustTextHtml
         };
     }
 })();

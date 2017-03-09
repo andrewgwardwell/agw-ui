@@ -20,7 +20,8 @@
     "angular": "~1.5.3",
     "d3": "^3.5.17",
     "underscore": "~1.8.3",
-    "snap.svg": "~0.5.1"
+    "snap.svg": "~0.5.1",
+    "angulartics-google-analytics": "~0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

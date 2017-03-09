@@ -8,7 +8,7 @@
     top: 0;
     left: 0;
     border-radius: 0 0 30px 0;
-    padding: 15px 0 0 45px;
+    padding: 15px 0 0 15px;
     -webkit-transition: width 1s, opacity 1s, transform 2s;
     transition: width 1s, opacity 1s, transform 2s;
     i, span{
@@ -29,6 +29,7 @@
 @media(min-width: 992px){
 	.agw-back-button{
 		width: 75px;
+        padding: 15px 0 0 45px;
 		&:hover{
 	    	width: 125px;
 	    	span{

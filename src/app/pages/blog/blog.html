@@ -22,7 +22,7 @@
                 <h3 ng-click="blog.goToDetail(value.nid, value)">
                     {{value.title}}    
                 </h3>
-                <div ng-bind-html="blog.deliberatelyTrustDangerousSnippet(value.summary)">
+                <div ng-bind-html="blog.trustTextHtml(value.summary)">
                 </div>
                 <div class="terms">
                     <div class="term" ng-repeat="(key, term) in value.terms track by $index" ng-click="blog.goToSkill(term, false)">

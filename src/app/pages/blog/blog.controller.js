@@ -6,7 +6,7 @@
         .controller('BlogController', BlogController);
 
     /** @ngInject */
-    function BlogController(posts, $log, $state, $sce, util){
+    function BlogController(posts, $log, $state, util){
         // var _ = lodash;
         var vm = this;
         vm.data = [];
@@ -16,12 +16,13 @@
         vm.filter = filterSkills;
         vm.filterSkills = filterSkills;
         vm.displaySkills = false;
+        vm.trustTextHtml = util.trustTextHtml;
 
         vm.goToDetail = function(id, value) {
             $state.go('blog.detail', { id: id, node: value });
         };
 
-        vm.goToSkill = function(value, toggle = true) {
+        vm.goToSkill = function(value) {
             vm.selectedSkill = value;
             vm.filterSkills({}, value);
             if(toggle){
@@ -31,10 +32,6 @@
 
         vm.skillsToggle = function(){
             vm.displaySkills = !vm.displaySkills;
-        };
-
-        vm.deliberatelyTrustDangerousSnippet = function(text){
-            return $sce.trustAsHtml(text);
         };
 
         function filterSkills(item, model) {
