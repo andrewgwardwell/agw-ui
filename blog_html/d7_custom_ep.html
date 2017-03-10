@@ -1,0 +1,35 @@
+<p>Creating an endpoint in Drupal is pretty straightforward, and is essential to know in today's microservices driven web. Like anything in Drupal there are a couple of ways to go about it. I will take you through one approach. At the end you will be able to build your own custom endpoint. This post assumes you have some Drupal development experience.</p>
+<p>Creating a custom endpoint can be helpful for times when something like the <a href="https://www.drupal.org/project/services" target="_blank">Services</a> module will not cut it. Drupal data structures are generally a nightmare on the front end (think about getting the values <code>src</code> value of multiple cardinality image field). This is one instance where being able to customize your own output can be helpful.</p>
+<p>I will focus on producing an endpoint for consumption by an Angular application in this post. The API is being served from a different domain than where the frontend application lives. This works well if you have your Drupal application on one port locally and your angular served via a task runner such as Gulp sic. drupal.localhost:8080/api to localhost:3000/#.</p>
+<h2>Create Custom Endpoint</h2>
+<ol>
+    <li>
+        <p>Create a drupal menu item using hook_menu.</p>
+        <pre>function your_module_menu(){
+         $items = array();
+         $items['api/endpoint'] = array(
+               'title' =&gt; 'example endpoint',
+               'page callback' =&gt; 'your_module_ep_output',
+               'access callback' =&gt; TRUE,
+               'type' =&gt; MENU_CALLBACK
+         );
+         return $items;
+}</pre>
+        <p>You will need to clear the cache for the path to register</p>
+    </li>
+    <li>
+        <p>Create the callback for your endpoint. This is where you produce what you want to return to the EP. In our case this looks like this:</p>
+        <pre>function your_ep_output(){
+         $return = array();//do what you want here to supply $return
+         drupal_json_output($return);
+         die();
+}</pre>
+        <p><code>drupal_json_output()</code> adds JSON content headers as well as encodes your data.</p>
+    </li>
+    <li>
+        <p>In order to test and communicate across origins you will have to install the <a href="https://www.drupal.org/project/cors" target="_blank">CORS</a> module. This will allow your angular application to call your api application. The module has pretty good documentation, but an example of how you might want to configure the setup might be:</p>
+        <pre>api/*|http://localhost:3000|GET,POST|Content-Type</pre>
+        <p>Localhost being your angular app. api/* is your path with wildcard. GET, POST are actions you are allowing. And Content-type is a header that you are accounting for (JSON).</p>
+    </li>
+</ol>
+<p>Stay calm clear cache. You can now hit up your endpoint and see the JSON output. I recommend using the <a href="https://chrome.google.com/webstore/detail/jsonview" target="_blank">JSONView</a> extension for chrome. It will give you a nice collapsible view of the JSON</p>

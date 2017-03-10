@@ -19,6 +19,39 @@
 	padding-right: 0;
 }
 
+//code 
+
+pre {
+    font-family: "Courier 10 Pitch", Courier, monospace;
+    font-size: 95%;
+    line-height: 140%;
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    border: none;
+    border-radius: 0;
+}       
+
+code {
+    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+    font-size: 95%;
+    line-height: 140%;
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    background: $opaque-bg;
+    display: inline;
+}
+
+code.block {
+    display: block;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0;
+}
+
 @media(min-width: 992px){
 	.desktop-show{
 		display: block;

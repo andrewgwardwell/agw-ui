@@ -39,7 +39,7 @@
             <span class="icon">
                 <i class="fa fa-close" ng-click="blog.skillsToggle()"></i>          
             </span>
-            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in blog.skills track by $index" ng-click="blog.goToSkill(skill)">
+            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in blog.skills track by $index" ng-click="blog.goToSkill(skill, true)">
                 <h3 class="skill">
                     {{skill.name}}   
                 </h3>

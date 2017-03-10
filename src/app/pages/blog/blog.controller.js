@@ -22,7 +22,7 @@
             $state.go('blog.detail', { id: id, node: value });
         };
 
-        vm.goToSkill = function(value) {
+        vm.goToSkill = function(value, toggle) {
             vm.selectedSkill = value;
             vm.filterSkills({}, value);
             if(toggle){
@@ -56,17 +56,29 @@
         };
 
         function getPosts(){
-            // books.query();
-            posts.query({}, function(response) {
-                $log.info('Success! Got projects.');
-                vm.data = response;
-                vm.posts = response;
-                vm.skills = _.uniq(_.flatten(getAllSkills(response)), function(item) {
+            var hash = util.cacheGet('postHash');
+            var records = util.cacheGet('posts');
+            if(records && records.key === hash){
+                vm.data = records.items;
+                vm.posts = records.items;
+                vm.skills = _.uniq(_.flatten(getAllSkills(records.items)), function(item) {
                     return item.tid;
                 });
-            }, function() {
-                $log.info('Error! Project fetch failed.');
-            });
+                return;
+            } else {
+                posts.query({}, function(response) {
+                    $log.info('Success! Got posts.');
+                    vm.data = response.items;
+                    vm.posts = response.items;
+                    vm.skills = _.uniq(_.flatten(getAllSkills(response.items)), function(item) {
+                        return item.tid;
+                    });
+                    util.cacheSet('postHash', response.key);
+                    util.cacheSet('posts', {key: response.key, items: response.items});
+                }, function() {
+                    $log.info('Error! Post fetch failed.');
+                });
+            }
         }
 
         function getAllSkills(data) {

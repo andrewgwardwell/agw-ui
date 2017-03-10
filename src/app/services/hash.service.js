@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 var url = 'http://agw:8888/api/cache-hash';
-// var url = 'http://api.andrewgwardwell.com/api';
+var url = 'http://api.andrewgwardwell.com/api/cache-hash';
 angular
   .module('agwUi')
   .factory('hash', ['$resource', function($resource) {
