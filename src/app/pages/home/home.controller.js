@@ -2,9 +2,9 @@
     'use strict';
     angular
         .module('agwUi')
-        .controller('HomeController', HomeController);
+        .controller('HomeController', ['$log', 'util', 'hash', 'ngSnap', HomeController]);
 
-    function HomeController(ngSnap, util, projects){
+    function HomeController($log, util, hash, ngSnap){
         var vm = this;
         var time = util.getGreeting();
         vm.greeting = time.greeting;
@@ -13,6 +13,25 @@
         var s = ngSnap('#svg');
         var sV = ngSnap('#svg-two');
         // var mina;
+
+        function _init(){
+            hash.query({type: 'article'}, function(response){
+                $log.info('Success! Got article hash.');
+                vm.postHash = response.key;
+                util.cacheSet('articleHash', vm.postHash);
+            }, function(){
+                $log.info('Error! Project fetch failed.');
+                vm.fetching = false;
+            });
+            hash.query({type: 'ent_project'}, function(response){
+                $log.info('Success! Got project hash.');
+                vm.proHash = response.key;
+                util.cacheSet('projectHash', vm.proHash);
+            }, function(){
+                $log.info('Error! Project fetch failed.');
+                vm.fetching = false;
+            });
+        }
 
         function getRandomArbitrary(min, max) {
             return Math.random() * (max - min) + min;
@@ -138,6 +157,7 @@
         }
 
         boxOLines();
+        _init();
     }
 
 })();

@@ -3,7 +3,7 @@
 
   angular
     .module('agwUi')
-    .controller('WorkDetailController', WorkDetailController);
+    .controller('WorkDetailController', ['$log', '$stateParams', 'projects', '$uibModal', 'util', WorkDetailController]);
 
   /** @ngInject */
   function WorkDetailController($log, $stateParams, projects, $uibModal, util) {

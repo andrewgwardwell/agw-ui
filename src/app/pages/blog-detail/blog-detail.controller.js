@@ -3,7 +3,7 @@
 
   angular
     .module('agwUi')
-    .controller('BlogDetailController', BlogDetailController);
+    .controller('BlogDetailController',['$log', '$stateParams', 'posts', 'util', BlogDetailController]);
 
   /** @ngInject */
   function BlogDetailController($log, $stateParams, posts, util) {
@@ -11,7 +11,7 @@
     var vm = this;
     vm.nid = $stateParams.id;
     vm.node = $stateParams.node;
-    vm.trustTextHtml = util.trustTextHtml;
+    vm.trustTextHtml = util.agwTrustTextHtml;
     $log.info(vm.node);
 
     function _getById(){

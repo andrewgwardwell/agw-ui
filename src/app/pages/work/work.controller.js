@@ -3,7 +3,7 @@
 
     angular
         .module('agwUi')
-        .controller('WorkController', WorkController);
+        .controller('WorkController', ['projects', '$log', '$state', 'util', WorkController]);
 
     /** @ngInject */
     function WorkController(projects, $log, $state, util){
@@ -55,16 +55,29 @@
 
         function getByTerms(){
             // books.query();
-            projects.getProjects({}, function(response) {
-                $log.info('Success! Got projects.');
-                vm.data = response;
-                vm.projects = response;
-                vm.skills = _.uniq(_.flatten(getAllSkills(response)), function(item) {
+            var hash = util.cacheGet('projectHash');
+            var records = util.cacheGet('projects');
+            if(records && records.key === hash){
+                vm.data = records.items;
+                vm.projects = records.items;
+                vm.skills = _.uniq(_.flatten(getAllSkills(records.items)), function(item) {
                     return item.tid;
                 });
-            }, function() {
-                $log.info('Error! Project fetch failed.');
-            });
+                return;
+            } else {
+                projects.getProjects({}, function(response) {
+                    $log.info('Success! Got projects.');
+                    vm.data = response.items;
+                    vm.projects = response.items;
+                    vm.skills = _.uniq(_.flatten(getAllSkills(response.items)), function(item) {
+                        return item.tid;
+                    });
+                    util.cacheSet('projectHash', response.key);
+                    util.cacheSet('projects', {key: response.key, items: response.items});
+                }, function() {
+                    $log.info('Error! Project fetch failed.');
+                });
+            }
         }
 
         function getAllSkills(data) {

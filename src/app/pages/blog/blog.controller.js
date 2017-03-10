@@ -3,7 +3,7 @@
 
     angular
         .module('agwUi')
-        .controller('BlogController', BlogController);
+        .controller('BlogController', ['posts', '$log', '$state', 'util', BlogController]);
 
     /** @ngInject */
     function BlogController(posts, $log, $state, util){
@@ -16,7 +16,7 @@
         vm.filter = filterSkills;
         vm.filterSkills = filterSkills;
         vm.displaySkills = false;
-        vm.trustTextHtml = util.trustTextHtml;
+        vm.trustTextHtml = util.agwTrustTextHtml;
 
         vm.goToDetail = function(id, value) {
             $state.go('blog.detail', { id: id, node: value });

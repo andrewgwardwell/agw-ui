@@ -5,7 +5,7 @@ var url = 'http://agw:8888/api';
 angular
 //http://andrewgwardwell.com/api/node?parameters[type]=ent_project
   .module('agwUi')
-  .factory('projects', function($resource) {
+  .factory('projects', ['$resource', function($resource) {
     return $resource(url, {
       type: '@type',
       id: '@id'
@@ -18,7 +18,6 @@ angular
       },
       'getProjects': {
         method: 'GET',
-        isArray: true,
         url: url + '/formatted-nodes'
       },
       'getProject': {
@@ -26,5 +25,5 @@ angular
         url: url + '/node/:id'
       }
     });
-  });
+  }]);
 })();

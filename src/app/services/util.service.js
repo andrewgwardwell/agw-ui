@@ -1,18 +1,26 @@
 (function() {
     'use strict';
     angular.module('agwUi')
-        .factory('util', utilsService);
+        .factory('util', ['moment', '$sce', '$window', utilsService]);
 
-    function utilsService(moment, $sce) {
+    function utilsService(moment, $sce, $window) {
         function cacheSet(name, data) {
-
+           if ($window.sessionStorage) {
+                $window.sessionStorage[name] = angular.toJson(data);
+            }
         }
 
         function cacheGet(name) {
-
+           if ($window.sessionStorage[name]) {
+                return angular.fromJson($window.sessionStorage[name]);
+            } else {
+                return false;
+            }
         }
 
-        function cacheDestroy() {}
+        function cacheDestroy(name) {
+            $window.sessionStorage[name] = '';
+        }
 
         function srcSet(value, key){
           // $log.info(value);
@@ -43,33 +51,12 @@
             return $sce.trustAsHtml(text);
         };
 
-        // function loadVendorsList() {
-        //     if ($window.sessionStorage['vendorsList']) {
-        //         vendorsList = angular.fromJson($window.sessionStorage['vendorsList']);
-        //     } else {
-        //         rVendor.query({ sort: 'company' }, function(result) {
-        //             vendorsList = result.records;
-        //             $window.sessionStorage['vendorsList'] = angular.toJson(vendorsList);
-        //         });
-        //     }
-        // }
-
-        // function getVendorsList() {
-        //     return vendorsList;
-        // }
-
-        // function init() {
-        //     loadVendorsList();
-        // }
-
-        // init();
-
         return {
             getGreeting: getGreeting,
             cacheGet: cacheGet,
             cacheSet: cacheSet,
             srcSet: srcSet,
-            trustTextHtml: trustTextHtml
+            agwTrustTextHtml: trustTextHtml
         };
     }
 })();
