@@ -12,7 +12,9 @@
             'ui.router',
             'ui.bootstrap',
             'toastr',
-            'd3'
+            'd3',
+            'angulartics',
+            'angulartics.google.analytics'
         ]);
 
 })();

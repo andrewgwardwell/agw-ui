@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig) {
+  function config($logProvider, toastrConfig, $analyticsProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -17,7 +17,7 @@
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
 
-    // $analyticsProvider.virtualPageviews(false);
+    $analyticsProvider.virtualPageviews(false);
   }
 
 })();

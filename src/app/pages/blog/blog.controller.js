@@ -3,10 +3,11 @@
 
     angular
         .module('agwUi')
-        .controller('BlogController', ['posts', '$log', '$state', 'util', BlogController]);
+        .controller('BlogController', ['posts', '$log', '$state', 'util', '$analytics', BlogController]);
 
     /** @ngInject */
-    function BlogController(posts, $log, $state, util){
+    function BlogController(posts, $log, $state, util, $analytics){
+        $analytics.pageTrack('/blog/list');
         // var _ = lodash;
         var vm = this;
         vm.data = [];

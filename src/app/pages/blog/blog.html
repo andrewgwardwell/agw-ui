@@ -19,13 +19,13 @@
     <div class="work-block col-sm-12 no-padding">
         <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in blog.posts track by $index">
             <div class="ent_title">
-                <h3 ng-click="blog.goToDetail(value.nid, value)">
+                <h3 ng-click="blog.goToDetail(value.nid, value)" analytics-on="click" analytics-category="blog" analytics-label="{{value.title}}">
                     {{value.title}}    
                 </h3>
                 <div ng-bind-html="blog.trustTextHtml(value.summary)">
                 </div>
                 <div class="terms">
-                    <div class="term" ng-repeat="(key, term) in value.terms track by $index" ng-click="blog.goToSkill(term, false)">
+                    <div class="term" ng-repeat="(key, term) in value.terms track by $index" ng-click="blog.goToSkill(term, false)" analytics-on="click" analytics-category="skills" analytics-label="{{term.name}}">
                         <h5 class="skill">
                             {{term.name}}   
                         </h5>
@@ -39,7 +39,7 @@
             <span class="icon">
                 <i class="fa fa-close" ng-click="blog.skillsToggle()"></i>          
             </span>
-            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in blog.skills track by $index" ng-click="blog.goToSkill(skill, true)">
+            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in blog.skills track by $index" ng-click="blog.goToSkill(skill, true)" analytics-on="click" analytics-category="skills" analytics-label="{{skill.name}}">
                 <h3 class="skill">
                     {{skill.name}}   
                 </h3>

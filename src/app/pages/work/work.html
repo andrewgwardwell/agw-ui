@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="work-block col-sm-12 no-padding">
-        <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in work.projects track by $index" ng-click="work.goToDetail(value.nid, value)">
+        <div class="projects col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, value) in work.projects track by $index" ng-click="work.goToDetail(value.nid, value)" analytics-on="click" analytics-category="work" analytics-label="{{value.title}}">
             <img class="" srcset="{{work.srcSet(value, 'responsive_images')}}" sizes="(min-width:992px) 33vw, 100vw" src="{{value.responsive_images.md_img}}" />
             <div class="ent_title">
                 <h3>
@@ -31,7 +31,7 @@
             <span class="icon">
                 <i class="fa fa-close" ng-click="work.skillsToggle()"></i>          
             </span>
-            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in work.skills track by $index" ng-click="work.goToSkill(skill)">
+            <div class="skill col-sm-12 col-md-6 col-lg-4" ng-repeat="(key, skill) in work.skills track by $index" ng-click="work.goToSkill(skill)" analytics-on="click" analytics-category="skills" analytics-label="{{skill.name}}">
                 <h3 class="skill">
                     {{skill.name}}   
                 </h3>

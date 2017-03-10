@@ -2,9 +2,10 @@
     'use strict';
     angular
         .module('agwUi')
-        .controller('HomeController', ['$log', 'util', 'hash', 'ngSnap', HomeController]);
+        .controller('HomeController', ['$log', 'util', 'hash', '$analytics', 'ngSnap', HomeController]);
 
-    function HomeController($log, util, hash, ngSnap){
+    function HomeController($log, util, hash, $analytics, ngSnap){
+        $analytics.pageTrack('/');
         var vm = this;
         var time = util.getGreeting();
         vm.greeting = time.greeting;

@@ -3,10 +3,10 @@
 
     angular
         .module('agwUi')
-        .controller('ContactController', ContactController);
+        .controller('ContactController',['$analytics', ContactController]);
 
     /** @ngInject */
-    function ContactController() {
-
+    function ContactController($analytics) {
+    	$analytics.pageTrack('/contact');
     }
 })();

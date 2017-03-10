@@ -3,10 +3,11 @@
 
   angular
     .module('agwUi')
-    .controller('WorkDetailController', ['$log', '$stateParams', 'projects', '$uibModal', 'util', WorkDetailController]);
+    .controller('WorkDetailController', ['$log', '$stateParams', 'projects', '$uibModal', 'util', '$analytics', WorkDetailController]);
 
   /** @ngInject */
-  function WorkDetailController($log, $stateParams, projects, $uibModal, util) {
+  function WorkDetailController($log, $stateParams, projects, $uibModal, util, $analytics) {
+    $analytics.pageTrack('/work/'+$stateParams.id);
     // var _ = lodash;
     var vm = this;
     vm.nid = $stateParams.id;

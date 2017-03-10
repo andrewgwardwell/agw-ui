@@ -3,10 +3,11 @@
 
     angular
         .module('agwUi')
-        .controller('WorkController', ['projects', '$log', '$state', 'util', WorkController]);
+        .controller('WorkController', ['projects', '$log', '$state', 'util', '$analytics', WorkController]);
 
     /** @ngInject */
-    function WorkController(projects, $log, $state, util){
+    function WorkController(projects, $log, $state, util, $analytics){
+        $analytics.pageTrack('/work/list');
         // var _ = lodash;
         var vm = this;
         vm.data = [];
